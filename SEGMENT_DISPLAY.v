@@ -96,7 +96,7 @@ always@(dataout_buffer)
 			4'd7 : segment = 8'hf8; //7
 			4'd8 : segment = 8'h80; //8
 			4'd9 : segment = 8'h90; //9
-			4'd10 : segment = 8'hc6; //C, but a very very hot C
+			4'd10 : segment = 8'hc6; //C, but a very very very hot C
 			default : segment =8'hc0; //0
 		endcase
 		// Add decimal point for second digit
