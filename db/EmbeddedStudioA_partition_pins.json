@@ -8,19 +8,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "led[0]",
+					"name" : "character_selector[0]",
 					"strict" : false
 				},
 				{
-					"name" : "led[1]",
+					"name" : "character_selector[1]",
 					"strict" : false
 				},
 				{
-					"name" : "led[2]",
+					"name" : "character_selector[2]",
 					"strict" : false
 				},
 				{
-					"name" : "led[3]",
+					"name" : "character_selector[3]",
 					"strict" : false
 				},
 				{

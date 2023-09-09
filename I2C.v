@@ -4,36 +4,45 @@ module I2C(
 	scl,sda,data
 );
  
-input clk;//50MHz  
-input reset_n;
+input clk;//50MHz fpga clock
+input reset_n; // Reset
   
 output scl;//SCL 
 inout  sda;// SDA 
-output [15:0] data;
+output [15:0] data; // 16 bit of data received across 2 x 8 bit data frames
   
-reg [15:0]data_r;  
-reg scl;//SCL
-reg sda_r;//SDA 
-reg sda_link;//SDA   
-reg [7:0]scl_cnt;//SCL
+reg [15:0]data_register;  
+reg scl;
+reg sda_register;
+reg sda_link;   
+reg [7:0]scl_cnt;
 reg [2:0]cnt;
 reg [25:0]timer_cnt;
 reg [3:0]data_cnt;  
-reg [7:0]address_reg; 
+reg [7:0]address_register; 
 reg [8:0]state;
 
+/******************************************************************************
+This function increments the scl count every 5 us.
+******************************************************************************/
 always@(posedge clk or negedge reset_n)  
     begin  
         if(!reset_n)  
+				// resets back to 0 when reset is triggered (negative edge)
             scl_cnt <= 8'd0;  
         else if(scl_cnt == 8'd199)  
             scl_cnt <= 8'd0;  
         else  
             scl_cnt <= scl_cnt + 1'b1;  
     end  
+	 
+/******************************************************************************
+This function implements a state machine based on SCL_CNT.
+******************************************************************************/
 always@(posedge clk or negedge reset_n)  
     begin  
-        if(!reset_n)  
+        if(!reset_n)
+				// resets back to state 5 when reset is triggered (negative edge)
             cnt <= 3'd5;  
         else   
             case(scl_cnt)  
@@ -43,11 +52,13 @@ always@(posedge clk or negedge reset_n)
                 8'd199:cnt <= 3'd0;  
                default: cnt <= 3'd5;  
             endcase  
-    end  
+    end 
+	 
 `define SCL_HIG (cnt == 3'd1)  
 `define SCL_NEG (cnt == 3'd2)  
 `define SCL_LOW (cnt == 3'd3)  
 `define SCL_POS (cnt == 3'd0)  
+
 always@(posedge clk or negedge reset_n)  
     begin  
         if(!reset_n)  
@@ -58,65 +69,81 @@ always@(posedge clk or negedge reset_n)
             scl <= 1'b0;  
     end  
 
-	 
+/******************************************************************************
+This function increments timer_cnt every 1 second.
+******************************************************************************/	 
 always@(posedge clk or negedge reset_n)  
     begin  
-        if(!reset_n)  
+        if(!reset_n)
+				// resets back to 0 when reset is triggered (negative edge)
             timer_cnt <= 26'd0;  
         else if(timer_cnt == 26'd49999999)  
             timer_cnt <= 26'd0;  
         else   
             timer_cnt <= timer_cnt + 1'b1;  
     end  
- 
-//״̬������  
-parameter IDLE  = 9'b0_0000_0000,  
-             START  = 9'b0_0000_0010,  
-             ADDRESS    = 9'b0_0000_0100,  
-             ACK1       = 9'b0_0000_1000,  
-             READ1  = 9'b0_0001_0000,  
-             ACK2       = 9'b0_0010_0000,  
-             READ2  = 9'b0_0100_0000,  
-             NACK       = 9'b0_1000_0000,  
-             STOP       = 9'b1_0000_0000;  
-`define DEVICE_ADDRESS 8'b1001_0001
 
-//����5��״̬������  
+// I2C States
+parameter IDLE  = 9'b0_0000_0000, // I2C not busy
+             START  = 9'b0_0000_0010, // Start I2C transmission
+             ADDRESS    = 9'b0_0000_0100, // Transmission of Addresss 
+             ACK1       = 9'b0_0000_1000, // Acknowledgement bit 1
+             READ1  = 9'b0_0001_0000, // Read data frame 1 (8 bits)
+             ACK2       = 9'b0_0010_0000, // Acknowledgement bit 2
+             READ2  = 9'b0_0100_0000, // Read data frame 2 (8 bits) 
+             NACK       = 9'b0_1000_0000, // No Acknowledge bit
+             STOP       = 9'b1_0000_0000;  // Stop I2C transmission
+`define DEVICE_ADDRESS 8'b1001_0001 // LM75 Slave Address 0x91
+
+/******************************************************************************
+This function uses I2C communication to transmit 16 bits of data from 
+peripherals.
+******************************************************************************/  
 always@(posedge clk or negedge reset_n)  
     begin  
-        if(!reset_n)  
+        if(!reset_n) 
+				// Initialise state to IDLE to indicate I2C line is not busy
             begin  
-                data_r  <= 16'd0;  
-                sda_r       <= 1'b1;  
+                data_register  <= 16'd0;  
+                sda_register       <= 1'b1;  
                 sda_link    <= 1'b1;  
                 state       <= IDLE;  
-                address_reg <= 8'd0;  
+                address_register <= 8'd0;  
                 data_cnt    <= 4'd0;  
             end  
         else   
-            case(state)  
-                IDLE:  
-                    begin  
-                        sda_r   <= 1'b1;  
-                        sda_link <= 1'b1;  
+            case(state) 
+					 // I2C Idle State indicates that the line is not busy
+					 IDLE:  
+                    begin
+								// Set SDA to high
+                        sda_register   <= 1'b1;  
+                        sda_link <= 1'b1; 
+								// After 1 second change state to START
                         if(timer_cnt == 26'd49999999)  
                             state <= START;  
                         else  
                             state <= IDLE;  
                     end  
-                START:
-                    begin  
+                // I2C start condition occurs when SCL is high and SDA changes from High to Low
+					 START:
+                    begin
                         if(`SCL_HIG)  
                             begin  
-                                sda_r       <= 1'b0;  
-                                sda_link    <= 1'b1;  
-                                address_reg <= `DEVICE_ADDRESS;  
+										  // Change SDA to low to trigger start
+                                sda_register       <= 1'b0;  
+                                sda_link    <= 1'b1; 
+										  // Store slave address is address register 
+                                address_register <= `DEVICE_ADDRESS;
+										  // When SDA is set low I2C transmission starts. Change to next state, transmitting the sensor address
                                 state           <= ADDRESS;  
                                 data_cnt        <= 4'd0;  
                             end  
                         else  
                             state <= START;  
-                    end  
+                    end
+						  
+					 // I2C Address transmission occurs after start condition is set
                 ADDRESS:
                     begin  
                         if(`SCL_LOW)  
@@ -125,29 +152,31 @@ always@(posedge clk or negedge reset_n)
                                     begin  
                                         state   <= ACK1;  
                                         data_cnt <=  4'd0;  
-                                        sda_r       <= 1'b1;  
+                                        sda_register <= 1'b1;  
                                         sda_link    <= 1'b0;  
                                     end  
                                 else
                                     begin  
                                         state   <= ADDRESS;  
-                                        data_cnt <= data_cnt + 1'b1;  
+                                        data_cnt <= data_cnt + 1'b1; 
+													 // Transfer slave address to SDA register 
                                         case(data_cnt)  
-                                            4'd0: sda_r <= address_reg[7];
-                                            4'd1: sda_r <= address_reg[6];
-                                            4'd2: sda_r <= address_reg[5];
-                                            4'd3: sda_r <= address_reg[4];
-                                            4'd4: sda_r <= address_reg[3];
-                                            4'd5: sda_r <= address_reg[2];
-                                            4'd6: sda_r <= address_reg[1];
-                                            4'd7: sda_r <= address_reg[0];
+                                            4'd0: sda_register <= address_register[7];
+                                            4'd1: sda_register <= address_register[6];
+                                            4'd2: sda_register <= address_register[5];
+                                            4'd3: sda_register <= address_register[4];
+                                            4'd4: sda_register <= address_register[3];
+                                            4'd5: sda_register <= address_register[2];
+                                            4'd6: sda_register <= address_register[1];
+                                            4'd7: sda_register <= address_register[0];
                                             default: ;  
                                         endcase  
                                     end  
                             end  
                         else  
                             state <= ADDRESS;  
-                    end  
+                    end 
+					 // Acknowlegdment bit
                 ACK1:
                     begin  
                         if(!sda && (`SCL_HIG))  
@@ -157,89 +186,101 @@ always@(posedge clk or negedge reset_n)
                         else  
                             state <= ACK1;  
                     end  
+						  
+					 // Read data frame 1 (8 bits)
                 READ1:
-                    begin  
+                    begin 
+								// If 8 bits have been read and SCL is low change state to acknowledge data frame
                         if((`SCL_LOW) && (data_cnt == 4'd8))
 								begin  
                                 state   <= ACK2;  
                                 data_cnt <= 4'd0;  
-                                sda_r       <= 1'b1;  
+                                sda_register <= 1'b1;  
                                 sda_link    <= 1'b1;  
                             end  
+								// If SCL is high store SDA state in register
                         else if(`SCL_HIG)  
                             begin  
                                 data_cnt <= data_cnt + 1'b1;  
                                 case(data_cnt)  
-                                    4'd0: data_r[15] <= sda;  
-                                    4'd1: data_r[14] <= sda;  
-                                    4'd2: data_r[13] <= sda;  
-                                    4'd3: data_r[12] <= sda;  
-                                    4'd4: data_r[11] <= sda;  
-                                    4'd5: data_r[10] <= sda;  
-                                    4'd6: data_r[9]  <= sda;  
-                                    4'd7: data_r[8]  <= sda;  
+                                    4'd0: data_register[15] <= sda;  
+                                    4'd1: data_register[14] <= sda;  
+                                    4'd2: data_register[13] <= sda;  
+                                    4'd3: data_register[12] <= sda;  
+                                    4'd4: data_register[11] <= sda;  
+                                    4'd5: data_register[10] <= sda;  
+                                    4'd6: data_register[9]  <= sda;  
+                                    4'd7: data_register[8]  <= sda;  
                                     default: ;  
                                 endcase  
                             end  
                         else  
                             state <= READ1;  
-                    end  
+                    end
+					 // Acknowlegdment bit  
                 ACK2:  
                     begin     
                         if(`SCL_LOW)  
-                            sda_r <= 1'b0;  
+                            sda_register <= 1'b0;  
                         else if(`SCL_NEG)  
                             begin  
-                                sda_r   <= 1'b1;  
+                                sda_register   <= 1'b1;  
                                 sda_link    <= 1'b0;  
                                 state       <= READ2;  
                             end  
                         else  
                             state <= ACK2;  
-                    end  
+                    end 
+						  
+					 // Read data frame 2 (8 bits)
                 READ2: 
                     begin  
+								// If 8 bits have been read and SCL is low change state for no acknowledgment
                         if((`SCL_LOW) && (data_cnt == 4'd8))  
                             begin  
                                 state   <= NACK;  
                                 data_cnt <= 4'd0;  
-                                sda_r       <= 1'b1;  
+                                sda_register       <= 1'b1;  
                                 sda_link    <= 1'b1;  
                             end  
+								// If SCL is high store SDA state in register
                         else if(`SCL_HIG)  
                             begin  
                                 data_cnt <= data_cnt + 1'b1;  
                                 case(data_cnt)  
-                                    4'd0: data_r[7] <= sda;  
-                                    4'd1: data_r[6] <= sda;  
-                                    4'd2: data_r[5] <= sda;  
-                                    4'd3: data_r[4] <= sda;  
-                                    4'd4: data_r[3] <= sda;  
-                                    4'd5: data_r[2] <= sda;  
-                                    4'd6: data_r[1]  <= sda;  
-                                    4'd7: data_r[0]  <= sda;  
+                                    4'd0: data_register[7] <= sda;  
+                                    4'd1: data_register[6] <= sda;  
+                                    4'd2: data_register[5] <= sda;  
+                                    4'd3: data_register[4] <= sda;  
+                                    4'd4: data_register[3] <= sda;  
+                                    4'd5: data_register[2] <= sda;  
+                                    4'd6: data_register[1]  <= sda;  
+                                    4'd7: data_register[0]  <= sda;  
                                     default: ;  
                                 endcase  
                             end  
                         else  
                             state <= READ2;  
-                    end  
+                    end
+					 // No Acknowlegdment bit  
                 NACK:
                     begin  
                         if(`SCL_LOW)  
                             begin  
-                                state <= STOP;  
-                                sda_r   <= 1'b0;  
+                                state <= STOP;
+										  // SDA set to high to indicate stop
+                                sda_register   <= 1'b0;  
                             end  
                         else  
                             state <= NACK;  
-                    end  
+                    end 
+					 // I2C stop condition occurs when SCL is high and SDA changes from Low to High
                 STOP:  
                     begin  
                         if(`SCL_HIG)  
                             begin  
                                 state <= IDLE;  
-                                sda_r <= 1'b1;  
+                                sda_register <= 1'b1;  
                             end  
                         else  
                             state <= STOP;  
@@ -247,6 +288,8 @@ always@(posedge clk or negedge reset_n)
                 default: state <= IDLE;  
             endcase  
     end  
-assign sda   = sda_link ? sda_r: 1'bz;  
-assign data  = data_r;  
+	 
+assign sda   = sda_link ? sda_register: 1'bz;  
+assign data  = data_register; 
+ 
 endmodule
