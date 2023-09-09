@@ -120,7 +120,7 @@ always@(dataout_buffer)
 			4'd7 : segment = 8'hf8; //7
 			4'd8 : segment = 8'h80; //8
 			4'd9 : segment = 8'h90; //9
-			4'd10 : segment = 8'hc6; //C
+			4'd10 : segment = 8'hc6; //C, but a very very very hot C
 			4'd11 : segment = 8'h89; //H
 			4'd12 : segment = 8'hcF; //I
 			default : segment =8'hFF; //NULL
