@@ -14,6 +14,28 @@ reg [3:0] character_selector;
 wire [4:0] dataout_buffer;
 reg [1:0] display_data;
 reg [16:0] delay_cnt;
+reg [27:0]timer_cnt;
+reg display;
+
+/******************************************************************************
+This function increments timer_cnt every 3 second.
+******************************************************************************/	 
+always@(posedge clk, negedge reset_n)  
+    begin  
+        if(!reset_n)
+				// resets back to 0 when reset is triggered (negative edge)
+				begin
+					timer_cnt <= 28'd0;
+					display <= 1'b0;
+				end				
+        else if(timer_cnt == 28'd149999997)  
+				begin
+					timer_cnt <= 28'd0;
+					display <= display + 1'b1; // Increment the display when timer_cnt reaches its maximum		
+				end
+        else   
+            timer_cnt <= timer_cnt + 1'b1;  
+    end 
 
 /******************************************************************************
 This function calls the binary_decimal module.
@@ -23,8 +45,10 @@ binary_decimal binary_decimal(
 	.select(display_data),
 	.data(data[14:8]),
 	.decimal(data[7]),
+	.display_data(display),
 	.decimal_digit(dataout_buffer)
 );
+
 
 /******************************************************************************
 This function increments the delay count every 1 ms.
@@ -97,10 +121,12 @@ always@(dataout_buffer)
 			4'd8 : segment = 8'h80; //8
 			4'd9 : segment = 8'h90; //9
 			4'd10 : segment = 8'hc6; //C, but a very very very hot C
-			default : segment =8'hc0; //0
+			4'd11 : segment = 8'h89; //H
+			4'd12 : segment = 8'hcF; //I
+			default : segment =8'hFF; //NULL
 		endcase
 		// Add decimal point for second digit
-		if(display_data == 2'b10)
+		if((display_data == 2'b10) && (display == 0))
 			segment = segment & 8'b01111111; 
 	end
 

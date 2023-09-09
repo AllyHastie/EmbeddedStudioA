@@ -1,16 +1,16 @@
-module binary_decimal(reset, select, data, decimal, decimal_digit);
+module binary_decimal(reset, select, data, decimal, display_data, decimal_digit);
 
 input reset; // Reset
-input [7:0] data; //
+input [7:0] data; //Data Whole Number
 input [1:0] select; //Segement Display
-input decimal;
+input decimal; // Data Decimal
+input display_data; // Display Data
 output [3:0] decimal_digit;
 
 reg [3:0] decimal_digit;
 wire [6:0] whole_number;
 wire [6:0] fraction;
 reg [6:0] denom;
-
 wire [6:0] whole_number_2;
 
 /******************************************************************************
@@ -54,9 +54,19 @@ always@(whole_number, fraction, whole_number_2, decimal, reset)
 		if(!reset)
 			// resets back to 0 when reset is triggered
 			decimal_digit = 0;
-		else
+		else if (display_data == 1)
+			// Display Hi
 			case(select)
-				2'b00: decimal_digit = 10;
+				2'b00: decimal_digit = 13; //NULL
+				2'b01: decimal_digit = 12; // Static I
+				2'b10: decimal_digit = 11;	// Static H
+				2'b11: decimal_digit = 13; //NULL
+				default decimal_digit = 0;
+			endcase
+		else 
+			// Display Temperature
+			case(select)
+				2'b00: decimal_digit = 10; // Static C
 				2'b01: decimal_digit = (decimal) ? 4'd5 : 4'd0; 
 				2'b10: decimal_digit = fraction[3:0];
 				2'b11: decimal_digit = whole_number_2[3:0];
