@@ -1,5 +1,5 @@
 Analysis & Synthesis report for EmbeddedStudioA
-Sat Sep  9 17:38:02 2023
+Sat Sep  9 19:58:01 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -55,15 +55,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Sep  9 17:38:02 2023          ;
+; Analysis & Synthesis Status        ; Successful - Sat Sep  9 19:58:01 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; EmbeddedStudioA                                ;
 ; Top-level Entity Name              ; EmbeddedStudioA                                ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 251                                            ;
-;     Total combinational functions  ; 251                                            ;
-;     Dedicated logic registers      ; 80                                             ;
-; Total registers                    ; 80                                             ;
+; Total logic elements               ; 308                                            ;
+;     Total combinational functions  ; 308                                            ;
+;     Dedicated logic registers      ; 107                                            ;
+; Total registers                    ; 107                                            ;
 ; Total pins                         ; 16                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -202,20 +202,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 251           ;
+; Estimated Total logic elements              ; 308           ;
 ;                                             ;               ;
-; Total combinational functions               ; 251           ;
+; Total combinational functions               ; 308           ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 94            ;
-;     -- 3 input functions                    ; 62            ;
-;     -- <=2 input functions                  ; 95            ;
+;     -- 4 input functions                    ; 107           ;
+;     -- 3 input functions                    ; 63            ;
+;     -- <=2 input functions                  ; 138           ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 168           ;
-;     -- arithmetic mode                      ; 83            ;
+;     -- normal mode                          ; 199           ;
+;     -- arithmetic mode                      ; 109           ;
 ;                                             ;               ;
-; Total registers                             ; 80            ;
-;     -- Dedicated logic registers            ; 80            ;
+; Total registers                             ; 107           ;
+;     -- Dedicated logic registers            ; 107           ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
 ; I/O pins                                    ; 16            ;
@@ -223,9 +223,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0             ;
 ;                                             ;               ;
 ; Maximum fan-out node                        ; reset_n~input ;
-; Maximum fan-out                             ; 89            ;
-; Total fan-out                               ; 1010          ;
-; Average fan-out                             ; 2.77          ;
+; Maximum fan-out                             ; 116           ;
+; Total fan-out                               ; 1231          ;
+; Average fan-out                             ; 2.75          ;
 +---------------------------------------------+---------------+
 
 
@@ -234,20 +234,20 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                 ; Entity Name         ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |EmbeddedStudioA                                ; 251 (0)             ; 80 (0)                    ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |EmbeddedStudioA                                                                                                                                                                                                    ; EmbeddedStudioA     ; work         ;
-;    |I2C:I2C|                                    ; 119 (119)           ; 61 (61)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|I2C:I2C                                                                                                                                                                                            ; I2C                 ; work         ;
-;    |SEGMENT_DISPLAY:SEGMENT_DISPLAY|            ; 132 (42)            ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY                                                                                                                                                                    ; SEGMENT_DISPLAY     ; work         ;
-;       |binary_decimal:binary_decimal|           ; 90 (8)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal                                                                                                                                      ; binary_decimal      ; work         ;
-;          |lpmdiv:lpmdiv_inst_2|                 ; 24 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2                                                                                                                 ; lpmdiv              ; work         ;
-;             |lpm_divide:LPM_DIVIDE_component|   ; 24 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component                                                                                 ; lpm_divide          ; work         ;
-;                |lpm_divide_79u:auto_generated|  ; 24 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated                                                   ; lpm_divide_79u      ; work         ;
-;                   |sign_div_unsign_ekh:divider| ; 24 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider                       ; sign_div_unsign_ekh ; work         ;
-;                      |alt_u_div_f4f:divider|    ; 24 (24)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider ; alt_u_div_f4f       ; work         ;
-;          |lpmdiv:lpmdiv_inst|                   ; 58 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst                                                                                                                   ; lpmdiv              ; work         ;
-;             |lpm_divide:LPM_DIVIDE_component|   ; 58 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component                                                                                   ; lpm_divide          ; work         ;
-;                |lpm_divide_79u:auto_generated|  ; 58 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated                                                     ; lpm_divide_79u      ; work         ;
-;                   |sign_div_unsign_ekh:divider| ; 58 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider                         ; sign_div_unsign_ekh ; work         ;
-;                      |alt_u_div_f4f:divider|    ; 58 (58)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider   ; alt_u_div_f4f       ; work         ;
+; |EmbeddedStudioA                                ; 308 (0)             ; 107 (0)                   ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |EmbeddedStudioA                                                                                                                                                                                                    ; EmbeddedStudioA     ; work         ;
+;    |I2C:I2C|                                    ; 118 (118)           ; 59 (59)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|I2C:I2C                                                                                                                                                                                            ; I2C                 ; work         ;
+;    |SEGMENT_DISPLAY:SEGMENT_DISPLAY|            ; 190 (96)            ; 48 (48)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY                                                                                                                                                                    ; SEGMENT_DISPLAY     ; work         ;
+;       |binary_decimal:binary_decimal|           ; 94 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal                                                                                                                                      ; binary_decimal      ; work         ;
+;          |lpmdiv:lpmdiv_inst_2|                 ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2                                                                                                                 ; lpmdiv              ; work         ;
+;             |lpm_divide:LPM_DIVIDE_component|   ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component                                                                                 ; lpm_divide          ; work         ;
+;                |lpm_divide_79u:auto_generated|  ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated                                                   ; lpm_divide_79u      ; work         ;
+;                   |sign_div_unsign_ekh:divider| ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider                       ; sign_div_unsign_ekh ; work         ;
+;                      |alt_u_div_f4f:divider|    ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider ; alt_u_div_f4f       ; work         ;
+;          |lpmdiv:lpmdiv_inst|                   ; 57 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst                                                                                                                   ; lpmdiv              ; work         ;
+;             |lpm_divide:LPM_DIVIDE_component|   ; 57 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component                                                                                   ; lpm_divide          ; work         ;
+;                |lpm_divide_79u:auto_generated|  ; 57 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated                                                     ; lpm_divide_79u      ; work         ;
+;                   |sign_div_unsign_ekh:divider| ; 57 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider                         ; sign_div_unsign_ekh ; work         ;
+;                      |alt_u_div_f4f:divider|    ; 57 (57)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider   ; alt_u_div_f4f       ; work         ;
 +-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -294,21 +294,23 @@ Encoding Type:  One-Hot
 +---------+---------+---------+---------+---------+---------+
 
 
-+----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                               ;
-+----------------------------------------+-----------------------------------------+
-; Register name                          ; Reason for Removal                      ;
-+----------------------------------------+-----------------------------------------+
-; I2C:I2C|address_register[1..3,5,6]     ; Stuck at GND due to stuck port data_in  ;
-; I2C:I2C|address_register[4,7]          ; Merged with I2C:I2C|address_register[0] ;
-; I2C:I2C|cnt.101                        ; Lost fanout                             ;
-; I2C:I2C|state~14                       ; Lost fanout                             ;
-; I2C:I2C|cnt~4                          ; Lost fanout                             ;
-; I2C:I2C|cnt~5                          ; Lost fanout                             ;
-; I2C:I2C|timer_cnt[0]                   ; Merged with I2C:I2C|scl_cnt[0]          ;
-; I2C:I2C|timer_cnt[1]                   ; Merged with I2C:I2C|scl_cnt[1]          ;
-; Total Number of Removed Registers = 13 ;                                         ;
-+----------------------------------------+-----------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                ;
++----------------------------------------+----------------------------------------------------------+
+; Register name                          ; Reason for Removal                                       ;
++----------------------------------------+----------------------------------------------------------+
+; I2C:I2C|address_register[1..3,5,6]     ; Stuck at GND due to stuck port data_in                   ;
+; I2C:I2C|address_register[4,7]          ; Merged with I2C:I2C|address_register[0]                  ;
+; I2C:I2C|cnt.101                        ; Lost fanout                                              ;
+; I2C:I2C|state~14                       ; Lost fanout                                              ;
+; I2C:I2C|cnt~4                          ; Lost fanout                                              ;
+; I2C:I2C|cnt~5                          ; Lost fanout                                              ;
+; I2C:I2C|timer_cnt[0]                   ; Merged with SEGMENT_DISPLAY:SEGMENT_DISPLAY|timer_cnt[0] ;
+; I2C:I2C|scl_cnt[0]                     ; Merged with SEGMENT_DISPLAY:SEGMENT_DISPLAY|timer_cnt[0] ;
+; I2C:I2C|timer_cnt[1]                   ; Merged with I2C:I2C|scl_cnt[1]                           ;
+; I2C:I2C|timer_cnt[2]                   ; Merged with I2C:I2C|scl_cnt[2]                           ;
+; Total Number of Removed Registers = 15 ;                                                          ;
++----------------------------------------+----------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -316,10 +318,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 80    ;
+; Total registers                              ; 107   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 80    ;
+; Number of registers using Asynchronous Clear ; 107   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 4     ;
 ; Number of registers using Preset             ; 0     ;
@@ -343,8 +345,7 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------+
 ; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |EmbeddedStudioA|I2C:I2C|data_cnt[3]                                                            ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[2] ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[0] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------+
 
 
@@ -454,24 +455,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 16                          ;
-; cycloneiii_ff         ; 80                          ;
-;     CLR               ; 76                          ;
+; cycloneiii_ff         ; 107                         ;
+;     CLR               ; 103                         ;
 ;     ENA CLR           ; 4                           ;
 ; cycloneiii_io_obuf    ; 1                           ;
-; cycloneiii_lcell_comb ; 255                         ;
-;     arith             ; 83                          ;
+; cycloneiii_lcell_comb ; 313                         ;
+;     arith             ; 109                         ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 57                          ;
-;         3 data inputs ; 25                          ;
-;     normal            ; 172                         ;
+;         2 data inputs ; 82                          ;
+;         3 data inputs ; 26                          ;
+;     normal            ; 204                         ;
 ;         0 data inputs ; 7                           ;
-;         1 data inputs ; 7                           ;
-;         2 data inputs ; 27                          ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 44                          ;
 ;         3 data inputs ; 37                          ;
-;         4 data inputs ; 94                          ;
+;         4 data inputs ; 107                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 22.80                       ;
-; Average LUT depth     ; 9.25                        ;
+; Average LUT depth     ; 8.19                        ;
 +-----------------------+-----------------------------+
 
 
@@ -490,7 +491,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sat Sep  9 17:37:52 2023
+    Info: Processing started: Sat Sep  9 19:57:52 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off EmbeddedStudioA -c EmbeddedStudioA
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -507,10 +508,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file binary2
 Info (12127): Elaborating entity "EmbeddedStudioA" for the top level hierarchy
 Info (12128): Elaborating entity "I2C" for hierarchy "I2C:I2C" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 18
 Info (12128): Elaborating entity "SEGMENT_DISPLAY" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 26
-Warning (10230): Verilog HDL assignment warning at SEGMENT_DISPLAY.v(40): truncated value with size 32 to match size of target (17) File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 40
-Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(103): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 103
-Info (12128): Elaborating entity "binary_decimal" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal" File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 27
+Warning (10230): Verilog HDL assignment warning at SEGMENT_DISPLAY.v(64): truncated value with size 32 to match size of target (17) File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 64
+Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(129): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 129
+Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(129): variable "display" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 129
+Info (12128): Elaborating entity "binary_decimal" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal" File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 50
+Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(57): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 57
 Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(58): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 58
+Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(66): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 66
 Info (12128): Elaborating entity "lpmdiv" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst" File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 40
 Info (12128): Elaborating entity "lpm_divide" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component" File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 63
 Info (12130): Elaborated megafunction instantiation "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component" File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 63
@@ -543,15 +547,15 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 268 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 325 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 13 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 252 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info (21061): Implemented 309 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
     Info: Peak virtual memory: 4774 megabytes
-    Info: Processing ended: Sat Sep  9 17:38:02 2023
-    Info: Elapsed time: 00:00:10
+    Info: Processing ended: Sat Sep  9 19:58:01 2023
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:20
 
 
