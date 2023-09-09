@@ -1,0 +1,26 @@
+module EmbeddedStudioA(clk,reset_n,scl,sda,led,segment);
+
+input clk,reset_n; //50MHz fpga clock, negated reset, 
+output scl;  //I2C clock, 250KHz
+inout sda;   //I2C data
+output[3:0] led;  //7 segment display character selector
+output[7:0] segment;  //7 segment display
+wire[15:0] data;
+
+I2C I2C(
+	.clk(clk),
+	.reset_n(reset_n),
+	.scl(scl),
+	.sda(sda),
+	.data(data)
+);
+
+SEGMENT_DISPLAY SEGMENT_DISPLAY(
+	.clk(clk),
+	.reset_n(reset_n),
+	.segment(segment),
+	.data(data),
+	.led(led)
+);
+
+endmodule

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sat Sep  9 09:53:46 2023
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : EmbeddedStudioA
+Top-level Entity Name : EmbeddedStudioA
+Family : Cyclone IV E
+Total logic elements : 251
+    Total combinational functions : 251
+    Dedicated logic registers : 80
+Total registers : 80
+Total pins : 16
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
