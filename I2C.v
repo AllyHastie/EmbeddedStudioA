@@ -1,26 +1,29 @@
 module I2C(
-	clk,
-	reset_n,
-	scl,sda,data
+	clk, // Clock input
+	reset_n, // Reset signal (Active low)
+	scl, // Clock signal for I2C
+    sda, // Clock signal for I2C
+    data // 16-bit data to be transmitted
 );
- 
+
+// Declaring inputs and outputs
 input clk;//50MHz fpga clock
-input reset_n; // Reset
-  
-output scl;//SCL 
-inout  sda;// SDA 
+input reset_n; // Active-low reset signal
+output scl; // Clock output for I2C
+inout  sda; // Bidirectional data line for I2C
 output [15:0] data; // 16 bit of data received across 2 x 8 bit data frames
-  
-reg [15:0]data_register;  
-reg scl;
-reg sda_register;
-reg sda_link;   
-reg [7:0]scl_cnt;
-reg [2:0]cnt;
-reg [25:0]timer_cnt;
-reg [3:0]data_cnt;  
-reg [7:0]address_register; 
-reg [8:0]state;
+
+// Declaring internal registers
+reg [15:0]data_register; // Register to hold 16-bit data
+reg scl; // Register to hold SCL (I2C clock) state
+reg sda_register; // Register to hold SDA (I2C data) state
+reg sda_link; // Register to link SDA state
+reg [7:0]scl_cnt; // Counter for SCL clock
+reg [2:0]cnt; // General counter
+reg [25:0]timer_cnt; // Timer counter
+reg [3:0]data_cnt; // Counter for data bits
+reg [7:0]address_register; // Register to hold the device address
+reg [8:0]state; // Register to hold the state machine state
 
 /******************************************************************************
 This function increments the scl count every 5 us.
@@ -31,11 +34,11 @@ always@(posedge clk or negedge reset_n)
 				// resets back to 0 when reset is triggered (negative edge)
             scl_cnt <= 8'd0;  
         else if(scl_cnt == 8'd199)  
-            scl_cnt <= 8'd0;  
+            scl_cnt <= 8'd0;  // Reset the counter when it reaches 199
         else  
-            scl_cnt <= scl_cnt + 1'b1;  
+            scl_cnt <= scl_cnt + 1'b1;  // Increment the SCL counter
     end  
-	 
+
 /******************************************************************************
 This function implements a state machine based on SCL_CNT.
 ******************************************************************************/
@@ -43,30 +46,32 @@ always@(posedge clk or negedge reset_n)
     begin  
         if(!reset_n)
 				// resets back to state 5 when reset is triggered (negative edge)
-            cnt <= 3'd5;  
+            cnt <= 3'd5;  // If reset is active, set the counter to 5
         else   
             case(scl_cnt)  
-                8'd49: cnt <= 3'd1;
-                8'd99: cnt <= 3'd2;  
-                8'd149:cnt <= 3'd3;  
-                8'd199:cnt <= 3'd0;  
-               default: cnt <= 3'd5;  
+				8'd49: cnt <= 3'd1;  // When scl_cnt reaches 49, set cnt to 1
+				8'd99: cnt <= 3'd2;  // When scl_cnt reaches 99, set cnt to 2
+				8'd149: cnt <= 3'd3; // When scl_cnt reaches 149, set cnt to 3
+				8'd199: cnt <= 3'd0; // When scl_cnt reaches 199, set cnt to 0
+               default: cnt <= 3'd5;  // Otherwise, keep cnt to 5
             endcase  
     end 
-	 
-`define SCL_HIG (cnt == 3'd1)  
-`define SCL_NEG (cnt == 3'd2)  
-`define SCL_LOW (cnt == 3'd3)  
-`define SCL_POS (cnt == 3'd0)  
 
-always@(posedge clk or negedge reset_n)  
+// Define macros for SCL states
+`define SCL_HIG (cnt == 3'd1)  // SCL high condition
+`define SCL_NEG (cnt == 3'd2)  // SCL negative edge condition
+`define SCL_LOW (cnt == 3'd3)  // SCL low condition
+`define SCL_POS (cnt == 3'd0)  // SCL positive edge condition
+
+// Update scl signal based on cnt value
+always@(posedge clk or negedge reset_n)
     begin  
-        if(!reset_n)  
-            scl <= 1'b0;  
-        else if(`SCL_POS)  
-            scl <= 1'b1;  
-        else if(`SCL_NEG)  
-            scl <= 1'b0;  
+        if(!reset_n)  // If reset is low
+            scl <= 1'b0;  // Set scl low
+        else if(`SCL_POS)  // If positive edge condition for SCL
+            scl <= 1'b1;  // Set scl high
+        else if(`SCL_NEG)  // If negative edge condition for SCL
+            scl <= 1'b0;  // Set scl low
     end  
 
 /******************************************************************************
@@ -114,7 +119,7 @@ always@(posedge clk or negedge reset_n)
         else   
             case(state) 
 					 // I2C Idle State indicates that the line is not busy
-					 IDLE:  
+					IDLE:  
                     begin
 								// Set SDA to high
                         sda_register   <= 1'b1;  
@@ -126,7 +131,7 @@ always@(posedge clk or negedge reset_n)
                             state <= IDLE;  
                     end  
                 // I2C start condition occurs when SCL is high and SDA changes from High to Low
-					 START:
+					START:
                     begin
                         if(`SCL_HIG)  
                             begin  
