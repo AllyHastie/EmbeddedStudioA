@@ -1,4 +1,4 @@
-module binary_decimal(reset, select, data, decimal, decimal_digit);
+module binary_decimal(reset, select, data, decimal, display_data, decimal_digit);
 
 // Declare input and output signals and their widths
 input reset; // Reset signal

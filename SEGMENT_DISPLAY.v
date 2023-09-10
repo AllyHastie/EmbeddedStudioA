@@ -39,6 +39,7 @@ always@(posedge clk, negedge reset_n)
 /******************************************************************************
 This function calls the binary_decimal module.
 ******************************************************************************/
+
 binary_decimal binary_decimal( 
 	.reset(reset_n),             // Input: reset signal (usually to initialize or clear)
 	.select(display_data),       // Input: data selection signal (controls what to display)
@@ -47,6 +48,7 @@ binary_decimal binary_decimal(
 	.display_data(display),		 // Input: display data
 	.decimal_digit(dataout_buffer) // Output: buffer where the computed decimal digit will be stored
 );
+
 
 /******************************************************************************
 This function increments the delay count every 1 ms.
@@ -125,6 +127,7 @@ always@(dataout_buffer)
 			4'd10 : segment = 8'hc6; //C, but a very very very hot C
 			4'd11 : segment = 8'h89; //H
 			4'd12 : segment = 8'hcF; //I
+
 			default : segment =8'hFF; //For any other value, just NULL
 		endcase
 		// Add decimal point for second digit
