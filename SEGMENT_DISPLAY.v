@@ -14,6 +14,27 @@ reg [3:0] character_selector;       // Declare 4-bit wide register to hold data 
 wire [4:0] dataout_buffer;          // 5-bit wire to hold intermediate data
 reg [1:0] display_data;             // 2-bit wide register to hold processed display data
 reg [16:0] delay_cnt;               // 17-bit wide register to hold delay counter value
+reg [27:0] timer_cnt;				// 28-bit wide register to hold timer counter value
+reg display;
+
+/******************************************************************************
+This function increments timer_cnt every 3 second.
+******************************************************************************/	
+always@(posedge clk, negedge reset_n)  
+    begin  
+        if(!reset_n)// Check if 'reset_n' is 0 (negative edge of reset)
+				begin
+					timer_cnt <= 28'd0; // Reset 'timer_cnt' to 0
+					display <= 1'b0;    // Reset 'display' to 0
+				end				
+        else if(timer_cnt == 28'd149999997) // timer_cnt reached 149999997 = 3 seconds
+				begin
+					timer_cnt <= 28'd0;         // Reset 'timer_cnt' back to 0
+					display <= display + 1'b1;  // Increment 'display' by 1
+				end
+        else   // neither reset is active nor 'timer_cnt' is at its max
+            timer_cnt <= timer_cnt + 1'b1;  // Increment 'timer_cnt' by 1
+    end  
 
 /******************************************************************************
 This function calls the binary_decimal module.
@@ -23,6 +44,7 @@ binary_decimal binary_decimal(
 	.select(display_data),       // Input: data selection signal (controls what to display)
 	.data(data[14:8]),           // Input: a subset of 'data', taking bits from 14 to 8
 	.decimal(data[7]),           // Input: the 7th bit of 'data' as the decimal value
+	.display_data(display),		 // Input: display data
 	.decimal_digit(dataout_buffer) // Output: buffer where the computed decimal digit will be stored
 );
 
@@ -101,10 +123,12 @@ always@(dataout_buffer)
 			4'd8 : segment = 8'h80; //8
 			4'd9 : segment = 8'h90; //9
 			4'd10 : segment = 8'hc6; //C, but a very very very hot C
-			default : segment =8'hc0; // For any other value, just display 0
+			4'd11 : segment = 8'h89; //H
+			4'd12 : segment = 8'hcF; //I
+			default : segment =8'hFF; //For any other value, just NULL
 		endcase
 		// Add decimal point for second digit
-		if(display_data == 2'b10) // If 'display_data' is 2'b10
+		if((display_data == 2'b10) && (display == 0)) // If it's displaying temperature
 			segment = segment & 8'b01111111; // Add decimal point to the 'segment'
 	end
 
