@@ -2,14 +2,14 @@
 module EmbeddedStudioA(clk,reset_n,scl,sda,character_selector,segment);
 
 // Define inputs and outputs for the module
-input clk,reset_n;               // Declare clk and reset_n as input signals. clk is the 50MHz clock for the FPGA and reset_n is the reset signal.
-output scl;                      // Declare scl as an output. This is the I2C clock running at 250KHz.
-inout sda;                       // Declare sda as an inout. This is the I2C data line.
-output[3:0] character_selector;  // Declare a 4-bit output for the 7-segment display character selector.
-output[7:0] segment;             // Declare an 8-bit output for the 7-segment display itself.
+input clk,reset_n;               // clk and reset_n as input signals. clk is the 50MHz clock for the FPGA and reset_n is the reset signal.
+output scl;                      // scl as an output. This is the I2C clock running at 250KHz.
+inout sda;                       // sda as an inout. This is the I2C data line.
+output[3:0] character_selector;  // 4-bit output for the 7-segment display character selector.
+output[7:0] segment;             // 8-bit output for the 7-segment display itself.
 
 // Internal signals
-wire[15:0] data;                 // Declare a 16-bit wire called 'data' for internal data communication.
+wire[15:0] data;                 // 16-bit wire called 'data' for internal data communication.
 
 // Instantiate the I2C module
 I2C I2C(
