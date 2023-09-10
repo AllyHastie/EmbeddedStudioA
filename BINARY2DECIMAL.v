@@ -5,6 +5,7 @@ input reset; // Reset signal
 input [7:0] data; // 8-bit input data
 input [1:0] select; // 2-bit signal to select which digit to display
 input decimal; // Single-bit input to decide if a decimal point should be displayed
+input display_data; // Display Data
 output [3:0] decimal_digit; // 4-bit output for the decimal digit to be displayed
 
 // Declare internal variables
@@ -56,7 +57,15 @@ always@(whole_number, fraction, whole_number_2, decimal, reset)
 	begin
 		if(!reset) // resets back to 0 when reset is triggered
 			decimal_digit = 0;
-		else // If reset is not triggered
+		else if (display_data == 1) // Display Hi
+			case(select)
+				2'b00: decimal_digit = 13; //NULL
+				2'b01: decimal_digit = 12; // Static I
+				2'b10: decimal_digit = 11; // Static H
+				2'b11: decimal_digit = 13; //NULL
+				default decimal_digit = 0;
+			endcase
+		else // Display Temperature
 			case(select) // Update the display digit 
 				2'b00: decimal_digit = 10; // Display special C haracter
 				2'b01: decimal_digit = (decimal) ? 4'd5 : 4'd0; // Display either 5 or 0 as decimal
