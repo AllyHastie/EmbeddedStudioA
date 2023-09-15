@@ -1,5 +1,5 @@
 Fitter report for EmbeddedStudioA
-Sat Sep  9 19:58:06 2023
+Fri Sep 15 10:59:22 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Sat Sep  9 19:58:06 2023          ;
+; Fitter Status                      ; Successful - Fri Sep 15 10:59:22 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; EmbeddedStudioA                                ;
 ; Top-level Entity Name              ; EmbeddedStudioA                                ;
@@ -159,7 +159,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   1.0%      ;
+;     Processors 2-4         ;   0.9%      ;
 +----------------------------+-------------+
 
 
@@ -963,15 +963,15 @@ Info (176353): Automatically promoted node clk~input (placed in PIN 23 (CLK1, DI
 Info (176353): Automatically promoted node reset_n~input (placed in PIN 25 (CLK3, DIFFCLK_1n)) File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 5
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G3
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[0]~0 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 13
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[2]~1 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 13
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[0]~0 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 15
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[2]~1 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 15
         Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider|StageOut[8]~0 File: C:/Users/Alici/Documents/EmbeddedStudioA/db/alt_u_div_f4f.tdf Line: 74
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[1]~2 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 13
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|denom[1]~2 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 15
         Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider|StageOut[7]~1 File: C:/Users/Alici/Documents/EmbeddedStudioA/db/alt_u_div_f4f.tdf Line: 74
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[0]~7 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 8
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[1]~9 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 8
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|Mux0~2 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 66
-        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[2]~14 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 8
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[0]~7 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 9
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[1]~9 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 9
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|Mux0~2 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 69
+        Info (176357): Destination node SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[2]~14 File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 9
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -1001,18 +1001,18 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.21 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.33 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/Users/Alici/Documents/EmbeddedStudioA/output_files/EmbeddedStudioA.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 5495 megabytes
-    Info: Processing ended: Sat Sep  9 19:58:06 2023
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 5488 megabytes
+    Info: Processing ended: Fri Sep 15 10:59:22 2023
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:08
 
 
 +----------------------------+

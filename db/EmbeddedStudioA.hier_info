@@ -1,20 +1,20 @@
 |EmbeddedStudioA
 clk => clk.IN2
 reset_n => reset_n.IN2
-scl << I2C:I2C.scl
+scl <= I2C:I2C.scl
 sda <> I2C:I2C.sda
-character_selector[0] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[1] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[2] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[3] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-segment[0] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[1] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[2] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[3] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[4] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[5] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[6] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[7] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+character_selector[0] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[1] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[2] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[3] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+segment[0] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[1] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[2] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[3] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[4] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[5] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[6] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[7] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
 
 
 |EmbeddedStudioA|I2C:I2C

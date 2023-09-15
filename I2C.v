@@ -140,7 +140,6 @@ always@(posedge clk or negedge reset_n)
                         else  
                             state <= START; // Stay in the START state if SCL is not high
             end
-                    end
 
 				// I2C Address transmission occurs after start condition is set
                 ADDRESS:
@@ -240,7 +239,7 @@ always@(posedge clk or negedge reset_n)
 						// If 8 bits have been read and SCL is low change state for no acknowledgment
                         if((`SCL_LOW) && (data_cnt == 4'd8))
                             begin  
-                                State           <= NACK;  // Change state to NACK for No Acknowledgment bit
+                                state           <= NACK;  // Change state to NACK for No Acknowledgment bit
                                 data_cnt        <= 4'd0;  // Reset the data count
                                 sda_register    <= 1'b1;  // Set SDA to high
                                 sda_link        <= 1'b1;  // Set sda_link to high

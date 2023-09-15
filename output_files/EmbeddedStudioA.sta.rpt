@@ -1,5 +1,5 @@
 Timing Analyzer report for EmbeddedStudioA
-Sat Sep  9 19:58:10 2023
+Fri Sep 15 10:59:26 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -99,7 +99,7 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.04        ;
+; Average used               ; 1.03        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
@@ -1173,7 +1173,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sat Sep  9 19:58:09 2023
+    Info: Processing started: Fri Sep 15 10:59:25 2023
 Info: Command: quartus_sta EmbeddedStudioA -c EmbeddedStudioA
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1246,8 +1246,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4770 megabytes
-    Info: Processing ended: Sat Sep  9 19:58:10 2023
+    Info: Processing ended: Fri Sep 15 10:59:26 2023
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

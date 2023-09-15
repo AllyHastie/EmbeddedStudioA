@@ -1,5 +1,5 @@
 Analysis & Synthesis report for EmbeddedStudioA
-Sat Sep  9 19:58:01 2023
+Fri Sep 15 10:59:14 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -55,7 +55,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Sep  9 19:58:01 2023          ;
+; Analysis & Synthesis Status        ; Successful - Fri Sep 15 10:59:14 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; EmbeddedStudioA                                ;
 ; Top-level Entity Name              ; EmbeddedStudioA                                ;
@@ -481,7 +481,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -491,14 +491,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sat Sep  9 19:57:52 2023
+    Info: Processing started: Fri Sep 15 10:59:02 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off EmbeddedStudioA -c EmbeddedStudioA
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file lpmdiv.v
     Info (12023): Found entity 1: lpmdiv File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file embeddedstudioa.v
-    Info (12023): Found entity 1: EmbeddedStudioA File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 3
+    Info (12023): Found entity 1: EmbeddedStudioA File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file segment_display.v
     Info (12023): Found entity 1: SEGMENT_DISPLAY File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file i2c.v
@@ -506,16 +506,16 @@ Info (12021): Found 1 design units, including 1 entities, in source file i2c.v
 Info (12021): Found 1 design units, including 1 entities, in source file binary2decimal.v
     Info (12023): Found entity 1: binary_decimal File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 1
 Info (12127): Elaborating entity "EmbeddedStudioA" for the top level hierarchy
-Info (12128): Elaborating entity "I2C" for hierarchy "I2C:I2C" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 18
-Info (12128): Elaborating entity "SEGMENT_DISPLAY" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 26
-Warning (10230): Verilog HDL assignment warning at SEGMENT_DISPLAY.v(64): truncated value with size 32 to match size of target (17) File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 64
-Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(129): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 129
-Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(129): variable "display" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 129
+Info (12128): Elaborating entity "I2C" for hierarchy "I2C:I2C" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 21
+Info (12128): Elaborating entity "SEGMENT_DISPLAY" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 30
+Warning (10230): Verilog HDL assignment warning at SEGMENT_DISPLAY.v(65): truncated value with size 32 to match size of target (17) File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 65
+Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(134): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 134
+Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(134): variable "display" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 134
 Info (12128): Elaborating entity "binary_decimal" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal" File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 50
-Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(57): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 57
-Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(58): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 58
-Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(66): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 66
-Info (12128): Elaborating entity "lpmdiv" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst" File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 40
+Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(60): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 60
+Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(61): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 61
+Warning (10235): Verilog HDL Always Construct warning at BINARY2DECIMAL.v(69): variable "select" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 69
+Info (12128): Elaborating entity "lpmdiv" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst" File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 44
 Info (12128): Elaborating entity "lpm_divide" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component" File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 63
 Info (12130): Elaborated megafunction instantiation "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component" File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 63
 Info (12133): Instantiated megafunction "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component" with the following parameter: File: C:/Users/Alici/Documents/EmbeddedStudioA/lpmdiv.v Line: 63
@@ -541,7 +541,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/add_
     Info (12023): Found entity 1: add_sub_8pc File: C:/Users/Alici/Documents/EmbeddedStudioA/db/add_sub_8pc.tdf Line: 23
 Info (12128): Elaborating entity "add_sub_8pc" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component|lpm_divide_79u:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_f4f:divider|add_sub_8pc:add_sub_1" File: C:/Users/Alici/Documents/EmbeddedStudioA/db/alt_u_div_f4f.tdf Line: 36
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (13000): Registers with preset signals will power-up high File: C:/Users/Alici/Documents/EmbeddedStudioA/I2C.v Line: 16
+Info (13000): Registers with preset signals will power-up high File: C:/Users/Alici/Documents/EmbeddedStudioA/I2C.v Line: 19
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
@@ -553,9 +553,9 @@ Info (21057): Implemented 325 device resources after synthesis - the final resou
     Info (21060): Implemented 1 bidirectional pins
     Info (21061): Implemented 309 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4774 megabytes
-    Info: Processing ended: Sat Sep  9 19:58:01 2023
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Peak virtual memory: 4778 megabytes
+    Info: Processing ended: Fri Sep 15 10:59:14 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:26
 
 
