@@ -56,6 +56,42 @@
 					"strict" : false
 				},
 				{
+					"name" : "dat[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[6]",
+					"strict" : false
+				},
+				{
+					"name" : "rs",
+					"strict" : false
+				},
+				{
+					"name" : "en",
+					"strict" : false
+				},
+				{
 					"name" : "sda",
 					"strict" : false
 				},

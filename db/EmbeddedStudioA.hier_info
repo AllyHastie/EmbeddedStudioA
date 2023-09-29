@@ -1,20 +1,31 @@
 |EmbeddedStudioA
-clk => clk.IN2
+clk => clk.IN3
 reset_n => reset_n.IN2
-scl <= I2C:I2C.scl
+scl << I2C:I2C.scl
 sda <> I2C:I2C.sda
-character_selector[0] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[1] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[2] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-character_selector[3] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
-segment[0] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[1] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[2] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[3] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[4] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[5] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[6] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
-segment[7] <= SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+character_selector[0] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[1] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[2] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+character_selector[3] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.character_selector
+segment[0] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[1] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[2] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[3] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[4] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[5] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[6] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+segment[7] << SEGMENT_DISPLAY:SEGMENT_DISPLAY.segment
+dat[0] << LCD:LCD.dat
+dat[1] << LCD:LCD.dat
+dat[2] << LCD:LCD.dat
+dat[3] << LCD:LCD.dat
+dat[4] << LCD:LCD.dat
+dat[5] << LCD:LCD.dat
+dat[6] << LCD:LCD.dat
+dat[7] << LCD:LCD.dat
+rs << LCD:LCD.rs
+rw << LCD:LCD.rw
+en << LCD:LCD.en
 
 
 |EmbeddedStudioA|I2C:I2C
@@ -170,6 +181,88 @@ data[12] <= data_register[12].DB_MAX_OUTPUT_PORT_TYPE
 data[13] <= data_register[13].DB_MAX_OUTPUT_PORT_TYPE
 data[14] <= data_register[14].DB_MAX_OUTPUT_PORT_TYPE
 data[15] <= data_register[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EmbeddedStudioA|LCD:LCD
+clk => clkr.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk => counter[11].CLK
+clk => counter[12].CLK
+clk => counter[13].CLK
+clk => counter[14].CLK
+clk => counter[15].CLK
+data[0] => ~NO_FANOUT~
+data[1] => ~NO_FANOUT~
+data[2] => ~NO_FANOUT~
+data[3] => ~NO_FANOUT~
+data[4] => ~NO_FANOUT~
+data[5] => ~NO_FANOUT~
+data[6] => ~NO_FANOUT~
+data[7] => Selector2.IN6
+data[7] => Selector4.IN6
+data[8] => data[8].IN1
+data[9] => data[9].IN1
+data[10] => data[10].IN1
+data[11] => data[11].IN1
+data[12] => data[12].IN1
+data[13] => data[13].IN1
+data[14] => data[14].IN1
+data[15] => ~NO_FANOUT~
+rs <= rs~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rw <= <GND>
+en <= en.DB_MAX_OUTPUT_PORT_TYPE
+dat[0] <= dat[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[1] <= dat[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[2] <= dat[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[3] <= dat[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[4] <= dat[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[5] <= dat[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[6] <= dat[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[7] <= dat[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EmbeddedStudioA|LCD:LCD|Binary_to_BCD:Binary_to_BCD
+bin[0] => bcd[0].DATAIN
+bin[1] => LessThan3.IN8
+bin[1] => Add3.IN8
+bin[1] => bcd.DATAA
+bin[2] => LessThan2.IN8
+bin[2] => Add2.IN8
+bin[2] => bcd.DATAA
+bin[3] => LessThan1.IN8
+bin[3] => Add1.IN8
+bin[3] => bcd.DATAA
+bin[4] => LessThan0.IN6
+bin[4] => Add0.IN6
+bin[4] => bcd.DATAA
+bin[5] => LessThan0.IN5
+bin[5] => Add0.IN5
+bin[5] => bcd.DATAA
+bin[6] => LessThan0.IN4
+bin[6] => Add0.IN4
+bin[6] => bcd.DATAA
+bcd[0] <= bin[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd[1] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[2] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[3] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[4] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[5] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[6] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[7] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[8] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[9] <= <GND>
+bcd[10] <= <GND>
+bcd[11] <= <GND>
 
 
 |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY

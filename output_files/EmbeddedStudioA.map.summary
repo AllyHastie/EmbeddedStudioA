@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Fri Sep 15 10:59:14 2023
+Analysis & Synthesis Status : Successful - Fri Sep 29 15:07:02 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : EmbeddedStudioA
 Top-level Entity Name : EmbeddedStudioA
 Family : Cyclone IV E
-Total logic elements : 308
-    Total combinational functions : 308
-    Dedicated logic registers : 107
-Total registers : 107
-Total pins : 16
+Total logic elements : 391
+    Total combinational functions : 372
+    Dedicated logic registers : 156
+Total registers : 156
+Total pins : 27
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

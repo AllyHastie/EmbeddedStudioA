@@ -1,5 +1,5 @@
 Analysis & Synthesis report for EmbeddedStudioA
-Fri Sep 15 10:59:14 2023
+Fri Sep 29 15:07:02 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -14,21 +14,26 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis IP Cores Summary
-  9. State Machine - |EmbeddedStudioA|I2C:I2C|state
- 10. State Machine - |EmbeddedStudioA|I2C:I2C|cnt
- 11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: I2C:I2C
- 16. Parameter Settings for User Entity Instance: SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component
- 17. Parameter Settings for User Entity Instance: SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component
- 18. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2"
- 19. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst"
- 20. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal"
- 21. Post-Synthesis Netlist Statistics for Top Partition
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
+  9. State Machine - |EmbeddedStudioA|LCD:LCD|next
+ 10. State Machine - |EmbeddedStudioA|LCD:LCD|current
+ 11. State Machine - |EmbeddedStudioA|I2C:I2C|state
+ 12. State Machine - |EmbeddedStudioA|I2C:I2C|cnt
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: I2C:I2C
+ 18. Parameter Settings for User Entity Instance: LCD:LCD
+ 19. Parameter Settings for User Entity Instance: SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst|lpm_divide:LPM_DIVIDE_component
+ 20. Parameter Settings for User Entity Instance: SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2|lpm_divide:LPM_DIVIDE_component
+ 21. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2"
+ 22. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst"
+ 23. Port Connectivity Checks: "SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal"
+ 24. Port Connectivity Checks: "LCD:LCD|Binary_to_BCD:Binary_to_BCD"
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+ 28. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -55,16 +60,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Sep 15 10:59:14 2023          ;
+; Analysis & Synthesis Status        ; Successful - Fri Sep 29 15:07:02 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; EmbeddedStudioA                                ;
 ; Top-level Entity Name              ; EmbeddedStudioA                                ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 308                                            ;
-;     Total combinational functions  ; 308                                            ;
-;     Dedicated logic registers      ; 107                                            ;
-; Total registers                    ; 107                                            ;
-; Total pins                         ; 16                                             ;
+; Total logic elements               ; 391                                            ;
+;     Total combinational functions  ; 372                                            ;
+;     Dedicated logic registers      ; 156                                            ;
+; Total registers                    ; 156                                            ;
+; Total pins                         ; 27                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -185,6 +190,8 @@ https://fpgasoftware.intel.com/eula.
 ; SEGMENT_DISPLAY.v                ; yes             ; User Verilog HDL File        ; C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v                    ;         ;
 ; I2C.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Alici/Documents/EmbeddedStudioA/I2C.v                                ;         ;
 ; BINARY2DECIMAL.v                 ; yes             ; User Verilog HDL File        ; C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v                     ;         ;
+; Binary_to_BCD.v                  ; yes             ; User Verilog HDL File        ; C:/Users/Alici/Documents/EmbeddedStudioA/Binary_to_BCD.v                      ;         ;
+; LCD.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Alici/Documents/EmbeddedStudioA/LCD.v                                ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -197,36 +204,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 308           ;
-;                                             ;               ;
-; Total combinational functions               ; 308           ;
-; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 107           ;
-;     -- 3 input functions                    ; 63            ;
-;     -- <=2 input functions                  ; 138           ;
-;                                             ;               ;
-; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 199           ;
-;     -- arithmetic mode                      ; 109           ;
-;                                             ;               ;
-; Total registers                             ; 107           ;
-;     -- Dedicated logic registers            ; 107           ;
-;     -- I/O registers                        ; 0             ;
-;                                             ;               ;
-; I/O pins                                    ; 16            ;
-;                                             ;               ;
-; Embedded Multiplier 9-bit elements          ; 0             ;
-;                                             ;               ;
-; Maximum fan-out node                        ; reset_n~input ;
-; Maximum fan-out                             ; 116           ;
-; Total fan-out                               ; 1231          ;
-; Average fan-out                             ; 2.75          ;
-+---------------------------------------------+---------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 391       ;
+;                                             ;           ;
+; Total combinational functions               ; 372       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 140       ;
+;     -- 3 input functions                    ; 68        ;
+;     -- <=2 input functions                  ; 164       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 248       ;
+;     -- arithmetic mode                      ; 124       ;
+;                                             ;           ;
+; Total registers                             ; 156       ;
+;     -- Dedicated logic registers            ; 156       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 27        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 124       ;
+; Total fan-out                               ; 1549      ;
+; Average fan-out                             ; 2.66      ;
++---------------------------------------------+-----------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -234,8 +241,10 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                 ; Entity Name         ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |EmbeddedStudioA                                ; 308 (0)             ; 107 (0)                   ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |EmbeddedStudioA                                                                                                                                                                                                    ; EmbeddedStudioA     ; work         ;
+; |EmbeddedStudioA                                ; 372 (0)             ; 156 (0)                   ; 0           ; 0            ; 0       ; 0         ; 27   ; 0            ; |EmbeddedStudioA                                                                                                                                                                                                    ; EmbeddedStudioA     ; work         ;
 ;    |I2C:I2C|                                    ; 118 (118)           ; 59 (59)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|I2C:I2C                                                                                                                                                                                            ; I2C                 ; work         ;
+;    |LCD:LCD|                                    ; 64 (51)             ; 49 (49)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|LCD:LCD                                                                                                                                                                                            ; LCD                 ; work         ;
+;       |Binary_to_BCD:Binary_to_BCD|             ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|LCD:LCD|Binary_to_BCD:Binary_to_BCD                                                                                                                                                                ; Binary_to_BCD       ; work         ;
 ;    |SEGMENT_DISPLAY:SEGMENT_DISPLAY|            ; 190 (96)            ; 48 (48)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY                                                                                                                                                                    ; SEGMENT_DISPLAY     ; work         ;
 ;       |binary_decimal:binary_decimal|           ; 94 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal                                                                                                                                      ; binary_decimal      ; work         ;
 ;          |lpmdiv:lpmdiv_inst_2|                 ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2                                                                                                                 ; lpmdiv              ; work         ;
@@ -260,6 +269,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Altera ; LPM_DIVIDE   ; 20.1    ; N/A          ; N/A          ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst   ; lpmdiv.v        ;
 ; Altera ; LPM_DIVIDE   ; 20.1    ; N/A          ; N/A          ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|lpmdiv:lpmdiv_inst_2 ; lpmdiv.v        ;
 +--------+--------------+---------+--------------+--------------+-----------------------------------------------------------------------------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |EmbeddedStudioA|LCD:LCD|next                                                                                                                                                                                                                               ;
++------------+------------+------------+------------+------------+------------+----------+------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; Name       ; next.dat15 ; next.dat14 ; next.dat13 ; next.dat12 ; next.dat11 ; next.nul ; next.dat10 ; next.dat9 ; next.dat8 ; next.dat7 ; next.dat6 ; next.dat5 ; next.dat4 ; next.dat3 ; next.dat2 ; next.dat1 ; next.dat0 ; next.set3 ; next.set2 ; next.set1 ; next.set0 ;
++------------+------------+------------+------------+------------+------------+----------+------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; next.set0  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ;
+; next.set1  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 1         ;
+; next.set2  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 1         ;
+; next.set3  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 1         ;
+; next.dat0  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat1  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat2  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat3  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat4  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat5  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat6  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat7  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat8  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat9  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat10 ; 0          ; 0          ; 0          ; 0          ; 0          ; 0        ; 1          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.nul   ; 0          ; 0          ; 0          ; 0          ; 0          ; 1        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat11 ; 0          ; 0          ; 0          ; 0          ; 1          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat12 ; 0          ; 0          ; 0          ; 1          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat13 ; 0          ; 0          ; 1          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat14 ; 0          ; 1          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; next.dat15 ; 1          ; 0          ; 0          ; 0          ; 0          ; 0        ; 0          ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
++------------+------------+------------+------------+------------+------------+----------+------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |EmbeddedStudioA|LCD:LCD|current                                                                                                                                                                                                                                                                                              ;
++---------------+---------------+---------------+---------------+---------------+---------------+-------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; Name          ; current.dat15 ; current.dat14 ; current.dat13 ; current.dat12 ; current.dat11 ; current.nul ; current.dat10 ; current.dat9 ; current.dat8 ; current.dat7 ; current.dat6 ; current.dat5 ; current.dat4 ; current.dat3 ; current.dat2 ; current.dat1 ; current.dat0 ; current.set3 ; current.set2 ; current.set1 ; current.set0 ;
++---------------+---------------+---------------+---------------+---------------+---------------+-------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; current.set0  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; current.set1  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1            ;
+; current.set2  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1            ;
+; current.set3  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1            ;
+; current.dat0  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat1  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat2  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat3  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat4  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat5  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat6  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat7  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat8  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat9  ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat10 ; 0             ; 0             ; 0             ; 0             ; 0             ; 0           ; 1             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.nul   ; 0             ; 0             ; 0             ; 0             ; 0             ; 1           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat11 ; 0             ; 0             ; 0             ; 0             ; 1             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat12 ; 0             ; 0             ; 0             ; 1             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat13 ; 0             ; 0             ; 1             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat14 ; 0             ; 1             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; current.dat15 ; 1             ; 0             ; 0             ; 0             ; 0             ; 0           ; 0             ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
++---------------+---------------+---------------+---------------+---------------+---------------+-------------+---------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 
 
 Encoding Type:  One-Hot
@@ -299,17 +368,49 @@ Encoding Type:  One-Hot
 +----------------------------------------+----------------------------------------------------------+
 ; Register name                          ; Reason for Removal                                       ;
 +----------------------------------------+----------------------------------------------------------+
+; LCD:LCD|dat[7]                         ; Stuck at GND due to stuck port data_in                   ;
 ; I2C:I2C|address_register[1..3,5,6]     ; Stuck at GND due to stuck port data_in                   ;
 ; I2C:I2C|address_register[4,7]          ; Merged with I2C:I2C|address_register[0]                  ;
+; LCD:LCD|current.set0                   ; Lost fanout                                              ;
+; LCD:LCD|current.set1                   ; Lost fanout                                              ;
+; LCD:LCD|current.set2                   ; Lost fanout                                              ;
+; LCD:LCD|current.set3                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat0                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat1                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat2                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat3                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat4                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat5                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat6                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat7                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat8                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat9                   ; Lost fanout                                              ;
+; LCD:LCD|current.dat10                  ; Lost fanout                                              ;
+; LCD:LCD|current.nul                    ; Lost fanout                                              ;
+; LCD:LCD|current.dat11                  ; Lost fanout                                              ;
+; LCD:LCD|current.dat12                  ; Lost fanout                                              ;
+; LCD:LCD|current.dat13                  ; Lost fanout                                              ;
+; LCD:LCD|current.dat14                  ; Lost fanout                                              ;
+; LCD:LCD|current.dat15                  ; Lost fanout                                              ;
 ; I2C:I2C|cnt.101                        ; Lost fanout                                              ;
+; LCD:LCD|next~2                         ; Lost fanout                                              ;
+; LCD:LCD|next~3                         ; Lost fanout                                              ;
+; LCD:LCD|next~4                         ; Lost fanout                                              ;
+; LCD:LCD|next~5                         ; Lost fanout                                              ;
+; LCD:LCD|next~6                         ; Lost fanout                                              ;
+; LCD:LCD|current~2                      ; Lost fanout                                              ;
+; LCD:LCD|current~3                      ; Lost fanout                                              ;
+; LCD:LCD|current~4                      ; Lost fanout                                              ;
+; LCD:LCD|current~5                      ; Lost fanout                                              ;
+; LCD:LCD|current~6                      ; Lost fanout                                              ;
 ; I2C:I2C|state~14                       ; Lost fanout                                              ;
 ; I2C:I2C|cnt~4                          ; Lost fanout                                              ;
 ; I2C:I2C|cnt~5                          ; Lost fanout                                              ;
-; I2C:I2C|timer_cnt[0]                   ; Merged with SEGMENT_DISPLAY:SEGMENT_DISPLAY|timer_cnt[0] ;
 ; I2C:I2C|scl_cnt[0]                     ; Merged with SEGMENT_DISPLAY:SEGMENT_DISPLAY|timer_cnt[0] ;
+; I2C:I2C|timer_cnt[0]                   ; Merged with SEGMENT_DISPLAY:SEGMENT_DISPLAY|timer_cnt[0] ;
 ; I2C:I2C|timer_cnt[1]                   ; Merged with I2C:I2C|scl_cnt[1]                           ;
 ; I2C:I2C|timer_cnt[2]                   ; Merged with I2C:I2C|scl_cnt[2]                           ;
-; Total Number of Removed Registers = 15 ;                                                          ;
+; Total Number of Removed Registers = 47 ;                                                          ;
 +----------------------------------------+----------------------------------------------------------+
 
 
@@ -318,12 +419,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 107   ;
+; Total registers                              ; 156   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 107   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 4     ;
+; Number of registers using Clock Enable       ; 7     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -345,7 +446,7 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------+
 ; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |EmbeddedStudioA|I2C:I2C|data_cnt[3]                                                            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[0] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |EmbeddedStudioA|SEGMENT_DISPLAY:SEGMENT_DISPLAY|binary_decimal:binary_decimal|decimal_digit[2] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------+
 
 
@@ -364,6 +465,36 @@ Encoding Type:  One-Hot
 ; NACK           ; 010000000 ; Unsigned Binary         ;
 ; STOP           ; 100000000 ; Unsigned Binary         ;
 +----------------+-----------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LCD:LCD ;
++----------------+-------+-----------------------------+
+; Parameter Name ; Value ; Type                        ;
++----------------+-------+-----------------------------+
+; set0           ; 0000  ; Unsigned Binary             ;
+; set1           ; 0001  ; Unsigned Binary             ;
+; set2           ; 0010  ; Unsigned Binary             ;
+; set3           ; 0011  ; Unsigned Binary             ;
+; dat0           ; 0100  ; Unsigned Binary             ;
+; dat1           ; 0101  ; Unsigned Binary             ;
+; dat2           ; 0110  ; Unsigned Binary             ;
+; dat3           ; 0111  ; Unsigned Binary             ;
+; dat4           ; 1000  ; Unsigned Binary             ;
+; dat5           ; 1001  ; Unsigned Binary             ;
+; dat6           ; 1010  ; Unsigned Binary             ;
+; dat7           ; 1011  ; Unsigned Binary             ;
+; dat8           ; 1100  ; Unsigned Binary             ;
+; dat9           ; 1101  ; Unsigned Binary             ;
+; dat10          ; 1110  ; Unsigned Binary             ;
+; dat11          ; 10000 ; Unsigned Binary             ;
+; dat12          ; 10001 ; Unsigned Binary             ;
+; dat13          ; 10010 ; Unsigned Binary             ;
+; dat14          ; 10011 ; Unsigned Binary             ;
+; dat15          ; 10100 ; Unsigned Binary             ;
+; nul            ; 1111  ; Unsigned Binary             ;
++----------------+-------+-----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -449,30 +580,41 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "LCD:LCD|Binary_to_BCD:Binary_to_BCD"                                                      ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; bcd[11..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 16                          ;
-; cycloneiii_ff         ; 107                         ;
+; boundary_port         ; 27                          ;
+; cycloneiii_ff         ; 156                         ;
 ;     CLR               ; 103                         ;
+;     ENA               ; 3                           ;
 ;     ENA CLR           ; 4                           ;
+;     plain             ; 46                          ;
 ; cycloneiii_io_obuf    ; 1                           ;
-; cycloneiii_lcell_comb ; 313                         ;
-;     arith             ; 109                         ;
+; cycloneiii_lcell_comb ; 378                         ;
+;     arith             ; 124                         ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 82                          ;
+;         2 data inputs ; 97                          ;
 ;         3 data inputs ; 26                          ;
-;     normal            ; 204                         ;
-;         0 data inputs ; 7                           ;
-;         1 data inputs ; 9                           ;
-;         2 data inputs ; 44                          ;
-;         3 data inputs ; 37                          ;
-;         4 data inputs ; 107                         ;
+;     normal            ; 254                         ;
+;         0 data inputs ; 8                           ;
+;         1 data inputs ; 11                          ;
+;         2 data inputs ; 53                          ;
+;         3 data inputs ; 42                          ;
+;         4 data inputs ; 140                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 22.80                       ;
-; Average LUT depth     ; 8.19                        ;
+; Average LUT depth     ; 7.18                        ;
 +-----------------------+-----------------------------+
 
 
@@ -491,7 +633,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Fri Sep 15 10:59:02 2023
+    Info: Processing started: Fri Sep 29 15:06:53 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off EmbeddedStudioA -c EmbeddedStudioA
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -505,9 +647,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file i2c.v
     Info (12023): Found entity 1: I2C File: C:/Users/Alici/Documents/EmbeddedStudioA/I2C.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file binary2decimal.v
     Info (12023): Found entity 1: binary_decimal File: C:/Users/Alici/Documents/EmbeddedStudioA/BINARY2DECIMAL.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file binary_to_bcd.v
+    Info (12023): Found entity 1: Binary_to_BCD File: C:/Users/Alici/Documents/EmbeddedStudioA/Binary_to_BCD.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lcd.v
+    Info (12023): Found entity 1: LCD File: C:/Users/Alici/Documents/EmbeddedStudioA/LCD.v Line: 1
 Info (12127): Elaborating entity "EmbeddedStudioA" for the top level hierarchy
-Info (12128): Elaborating entity "I2C" for hierarchy "I2C:I2C" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 21
-Info (12128): Elaborating entity "SEGMENT_DISPLAY" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 30
+Info (12128): Elaborating entity "I2C" for hierarchy "I2C:I2C" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 23
+Info (12128): Elaborating entity "LCD" for hierarchy "LCD:LCD" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 32
+Warning (10230): Verilog HDL assignment warning at LCD.v(69): truncated value with size 32 to match size of target (16) File: C:/Users/Alici/Documents/EmbeddedStudioA/LCD.v Line: 69
+Warning (10230): Verilog HDL assignment warning at LCD.v(107): truncated value with size 32 to match size of target (2) File: C:/Users/Alici/Documents/EmbeddedStudioA/LCD.v Line: 107
+Info (12128): Elaborating entity "Binary_to_BCD" for hierarchy "LCD:LCD|Binary_to_BCD:Binary_to_BCD" File: C:/Users/Alici/Documents/EmbeddedStudioA/LCD.v Line: 41
+Warning (10230): Verilog HDL assignment warning at Binary_to_BCD.v(14): truncated value with size 32 to match size of target (3) File: C:/Users/Alici/Documents/EmbeddedStudioA/Binary_to_BCD.v Line: 14
+Warning (10230): Verilog HDL assignment warning at Binary_to_BCD.v(20): truncated value with size 32 to match size of target (4) File: C:/Users/Alici/Documents/EmbeddedStudioA/Binary_to_BCD.v Line: 20
+Warning (10230): Verilog HDL assignment warning at Binary_to_BCD.v(22): truncated value with size 32 to match size of target (4) File: C:/Users/Alici/Documents/EmbeddedStudioA/Binary_to_BCD.v Line: 22
+Info (12128): Elaborating entity "SEGMENT_DISPLAY" for hierarchy "SEGMENT_DISPLAY:SEGMENT_DISPLAY" File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 41
 Warning (10230): Verilog HDL assignment warning at SEGMENT_DISPLAY.v(65): truncated value with size 32 to match size of target (17) File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 65
 Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(134): variable "display_data" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 134
 Warning (10235): Verilog HDL Always Construct warning at SEGMENT_DISPLAY.v(134): variable "display" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Alici/Documents/EmbeddedStudioA/SEGMENT_DISPLAY.v Line: 134
@@ -543,19 +696,29 @@ Info (12128): Elaborating entity "add_sub_8pc" for hierarchy "SEGMENT_DISPLAY:SE
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high File: C:/Users/Alici/Documents/EmbeddedStudioA/I2C.v Line: 19
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "dat[7]" is stuck at GND File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 10
+    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Alici/Documents/EmbeddedStudioA/EmbeddedStudioA.v Line: 11
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (17049): 35 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Alici/Documents/EmbeddedStudioA/output_files/EmbeddedStudioA.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 325 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 435 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 13 output pins
+    Info (21059): Implemented 24 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 309 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info (21061): Implemented 408 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 16 warnings
     Info: Peak virtual memory: 4778 megabytes
-    Info: Processing ended: Fri Sep 15 10:59:14 2023
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Processing ended: Fri Sep 29 15:07:02 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Alici/Documents/EmbeddedStudioA/output_files/EmbeddedStudioA.map.smsg.
 
 
