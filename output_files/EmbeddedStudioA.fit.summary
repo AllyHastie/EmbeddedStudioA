@@ -1,15 +1,15 @@
-Fitter Status : Successful - Fri Sep 15 10:59:22 2023
+Fitter Status : Successful - Fri Sep 29 15:07:08 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : EmbeddedStudioA
 Top-level Entity Name : EmbeddedStudioA
 Family : Cyclone IV E
 Device : EP4CE6E22C8
 Timing Models : Final
-Total logic elements : 308 / 6,272 ( 5 % )
-    Total combinational functions : 308 / 6,272 ( 5 % )
-    Dedicated logic registers : 107 / 6,272 ( 2 % )
-Total registers : 107
-Total pins : 16 / 92 ( 17 % )
+Total logic elements : 384 / 6,272 ( 6 % )
+    Total combinational functions : 372 / 6,272 ( 6 % )
+    Dedicated logic registers : 156 / 6,272 ( 2 % )
+Total registers : 156
+Total pins : 27 / 92 ( 29 % )
 Total virtual pins : 0
 Total memory bits : 0 / 276,480 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )

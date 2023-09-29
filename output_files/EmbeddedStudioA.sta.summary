@@ -3,39 +3,75 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -3.556
-TNS   : -261.735
+Slack : -5.032
+TNS   : -322.651
+
+Type  : Slow 1200mV 85C Model Setup 'LCD:LCD|clkr'
+Slack : -3.365
+TNS   : -23.458
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
 Slack : 0.432
 TNS   : 0.000
 
+Type  : Slow 1200mV 85C Model Hold 'LCD:LCD|clkr'
+Slack : 0.453
+TNS   : 0.000
+
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -162.109
+TNS   : -187.388
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'LCD:LCD|clkr'
+Slack : -1.487
+TNS   : -47.584
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -3.189
-TNS   : -233.982
+Slack : -4.576
+TNS   : -287.443
+
+Type  : Slow 1200mV 0C Model Setup 'LCD:LCD|clkr'
+Slack : -3.041
+TNS   : -19.993
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.382
+Slack : 0.381
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'LCD:LCD|clkr'
+Slack : 0.401
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -162.109
+TNS   : -187.388
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'LCD:LCD|clkr'
+Slack : -1.487
+TNS   : -47.584
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -1.045
-TNS   : -53.211
+Slack : -1.583
+TNS   : -72.514
+
+Type  : Fast 1200mV 0C Model Setup 'LCD:LCD|clkr'
+Slack : -0.867
+TNS   : -3.001
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : 0.178
+Slack : 0.177
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'LCD:LCD|clkr'
+Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -117.323
+TNS   : -135.293
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'LCD:LCD|clkr'
+Slack : -1.000
+TNS   : -32.000
 
 ------------------------------------------------------------
