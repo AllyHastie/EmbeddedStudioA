@@ -1,13 +1,13 @@
 module Binary_to_BCD(bin, bcd);
-  // Input ports and their sizes
-input [6:0] bin;
-// Output ports and their size
-output [11:0] bcd;
+// Declare input and output signals and their widths
+input [6:0] bin; // 7 Bit binary input signal
+output [11:0] bcd; // 12 bit BCD output signal
 // Internal variables
-reg [11:0] bcd;
-reg [2:0] i;
-
-// Always block - implement the Double Dabble algorithm
+reg [11:0] bcd; // 12 bit BCD register
+reg [2:0] i; //3 bit count
+/******************************************************************************
+This function converts binary to BCD using the Double Dable algorithm.
+******************************************************************************/
 always @(bin)
 begin
     bcd = 0; // Initialize bcd to zero.
@@ -24,4 +24,4 @@ begin
             bcd[11:8] = bcd[11:8] + 3;
     end
 end
-endmodule // Binary_to_BCD
+endmodule 
