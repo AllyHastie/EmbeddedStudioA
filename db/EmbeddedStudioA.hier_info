@@ -1,5 +1,5 @@
 |EmbeddedStudioA
-clk => clk.IN3
+clk => clk.IN4
 reset_n => reset_n.IN2
 scl << I2C:I2C.scl
 sda <> I2C:I2C.sda
@@ -26,6 +26,8 @@ dat[7] << LCD:LCD.dat
 rs << LCD:LCD.rs
 rw << LCD:LCD.rw
 en << LCD:LCD.en
+en_buzzer => en_buzzer.IN1
+speaker << BUZZER:BUZZER.speaker
 
 
 |EmbeddedStudioA|I2C:I2C
@@ -285,35 +287,6 @@ clk => delay_cnt[13].CLK
 clk => delay_cnt[14].CLK
 clk => delay_cnt[15].CLK
 clk => delay_cnt[16].CLK
-clk => display.CLK
-clk => timer_cnt[0].CLK
-clk => timer_cnt[1].CLK
-clk => timer_cnt[2].CLK
-clk => timer_cnt[3].CLK
-clk => timer_cnt[4].CLK
-clk => timer_cnt[5].CLK
-clk => timer_cnt[6].CLK
-clk => timer_cnt[7].CLK
-clk => timer_cnt[8].CLK
-clk => timer_cnt[9].CLK
-clk => timer_cnt[10].CLK
-clk => timer_cnt[11].CLK
-clk => timer_cnt[12].CLK
-clk => timer_cnt[13].CLK
-clk => timer_cnt[14].CLK
-clk => timer_cnt[15].CLK
-clk => timer_cnt[16].CLK
-clk => timer_cnt[17].CLK
-clk => timer_cnt[18].CLK
-clk => timer_cnt[19].CLK
-clk => timer_cnt[20].CLK
-clk => timer_cnt[21].CLK
-clk => timer_cnt[22].CLK
-clk => timer_cnt[23].CLK
-clk => timer_cnt[24].CLK
-clk => timer_cnt[25].CLK
-clk => timer_cnt[26].CLK
-clk => timer_cnt[27].CLK
 reset_n => reset_n.IN1
 segment[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
 segment[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
@@ -908,5 +881,90 @@ datab[0] => datab_node[0].IN0
 datab[1] => datab_node[1].IN0
 result[0] <= sum_eqn[0].DB_MAX_OUTPUT_PORT_TYPE
 result[1] <= sum_eqn[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EmbeddedStudioA|BUZZER:BUZZER
+clk => clk.IN1
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => tone.OUTPUTSELECT
+en_buzzer => play_music.DATAIN
+speaker <= speaker~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EmbeddedStudioA|BUZZER:BUZZER|music_ROM:get_notes
+clk => note[0]~reg0.CLK
+clk => note[1]~reg0.CLK
+clk => note[2]~reg0.CLK
+clk => note[3]~reg0.CLK
+clk => note[4]~reg0.CLK
+clk => note[5]~reg0.CLK
+clk => note[6]~reg0.CLK
+clk => note[7]~reg0.CLK
+address[0] => Ram0.RADDR
+address[1] => Ram0.RADDR1
+address[2] => Ram0.RADDR2
+address[3] => Ram0.RADDR3
+address[4] => Ram0.RADDR4
+address[5] => Ram0.RADDR5
+address[6] => Ram0.RADDR6
+note[0] <= note[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[1] <= note[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[2] <= note[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[3] <= note[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[4] <= note[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[5] <= note[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[6] <= note[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+note[7] <= note[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EmbeddedStudioA|BUZZER:BUZZER|divide_by_12:note_and_octave
+numerator[0] => remainder[0].DATAIN
+numerator[1] => remainder[1].DATAIN
+numerator[2] => Decoder2.IN3
+numerator[3] => Decoder1.IN2
+numerator[3] => Decoder2.IN2
+numerator[4] => Decoder0.IN1
+numerator[4] => Decoder1.IN1
+numerator[4] => Decoder2.IN1
+numerator[5] => Decoder0.IN0
+numerator[5] => Decoder1.IN0
+numerator[5] => Decoder2.IN0
+quotient[0] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+quotient[1] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+quotient[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+remainder[0] <= numerator[0].DB_MAX_OUTPUT_PORT_TYPE
+remainder[1] <= numerator[1].DB_MAX_OUTPUT_PORT_TYPE
+remainder[2] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+remainder[3] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
 
 

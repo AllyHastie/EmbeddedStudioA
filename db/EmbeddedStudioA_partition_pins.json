@@ -92,6 +92,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "speaker",
+					"strict" : false
+				},
+				{
 					"name" : "sda",
 					"strict" : false
 				},
@@ -101,6 +105,10 @@
 				},
 				{
 					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "en_buzzer",
 					"strict" : false
 				}
 			]

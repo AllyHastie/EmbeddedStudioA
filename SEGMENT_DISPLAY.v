@@ -30,7 +30,7 @@ always@(posedge clk, negedge reset_n)
         else if(timer_cnt == 28'd149999997) // timer_cnt reached 149999997 = 3 seconds
 				begin
 					timer_cnt <= 28'd0;         // Reset 'timer_cnt' back to 0
-					display <= display + 1'b1;  // Increment 'display' by 1
+					//display <= display + 1'b1;  // Increment 'display' by 1
 				end
         else   // neither reset is active nor 'timer_cnt' is at its max
             timer_cnt <= timer_cnt + 1'b1;  // Increment 'timer_cnt' by 1

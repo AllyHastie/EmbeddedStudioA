@@ -1,5 +1,5 @@
 Flow report for EmbeddedStudioA
-Fri Sep 29 15:07:12 2023
+Mon Oct 23 19:53:51 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,20 +41,20 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Fri Sep 29 15:07:09 2023          ;
+; Flow Status                        ; Successful - Mon Oct 23 19:53:49 2023          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; EmbeddedStudioA                                ;
 ; Top-level Entity Name              ; EmbeddedStudioA                                ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE6E22C8                                    ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 384 / 6,272 ( 6 % )                            ;
-;     Total combinational functions  ; 372 / 6,272 ( 6 % )                            ;
-;     Dedicated logic registers      ; 156 / 6,272 ( 2 % )                            ;
-; Total registers                    ; 156                                            ;
-; Total pins                         ; 27 / 92 ( 29 % )                               ;
+; Total logic elements               ; 407 / 6,272 ( 6 % )                            ;
+;     Total combinational functions  ; 401 / 6,272 ( 6 % )                            ;
+;     Dedicated logic registers      ; 178 / 6,272 ( 3 % )                            ;
+; Total registers                    ; 178                                            ;
+; Total pins                         ; 29 / 92 ( 32 % )                               ;
 ; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 0 / 276,480 ( 0 % )                            ;
+; Total memory bits                  ; 1,024 / 276,480 ( < 1 % )                      ;
 ; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                                 ;
 ; Total PLLs                         ; 0 / 2 ( 0 % )                                  ;
 +------------------------------------+------------------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/29/2023 15:06:53 ;
+; Start date & time ; 10/23/2023 19:53:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; EmbeddedStudioA     ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 256017933474159.169596401328392        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 256017933474159.169805120924768        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -99,11 +99,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4778 MB             ; 00:00:20                           ;
-; Fitter               ; 00:00:05     ; 1.0                     ; 5497 MB             ; 00:00:06                           ;
-; Assembler            ; 00:00:00     ; 1.0                     ; 4693 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4776 MB             ; 00:00:02                           ;
-; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:29                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4780 MB             ; 00:00:24                           ;
+; Fitter               ; 00:00:05     ; 1.0                     ; 5501 MB             ; 00:00:07                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4696 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4768 MB             ; 00:00:02                           ;
+; Total                ; 00:00:19     ; --                      ; --                  ; 00:00:34                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
