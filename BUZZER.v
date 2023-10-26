@@ -1,41 +1,41 @@
 module BUZZER(
-	input clk, // Clock
-	input en_buzzer, // Enable
-	output reg speaker // Buzzer
+	input clk, 			// Clock
+	input en_buzzer, 	// Enable
+	output reg speaker 	// Buzzer
 );
 
 // internal signals
-reg [31:0] tone; // 32-bit counter to give note being played
-reg play_music; // 1-bit value to determine if music should be played. 
-wire [2:0] octave; // 3-bits to indicate the 5 octaves
-wire [3:0] note; // 4-bits to indicate the 5 octaves
+reg [31:0] tone; 	// 32-bit counter to give note being played
+reg play_music; 	// 1-bit value to determine if music should be played. 
+wire [2:0] octave; 	// 3-bits to indicate the 5 octaves
+wire [3:0] note; 	// 4-bits to indicate the 5 octaves
 wire [7:0] allnotes;// 8-bit variable to store decimal value retrieved from ROM
 
 /******************************************************************************
 This function increments the tone counter.
 ******************************************************************************/
-always @(posedge clk)
+always @(posedge clk) // executes at every rising edge of 'clk'
 begin 
 	if (en_buzzer) 
 	begin
-		 if (play_music) begin
+		if (play_music) begin
 			// Continue playing the music
 			tone <= tone + 32'd1;
 			// The rest of your existing code for playing music
-		 end 
-		 else 
-		 begin
+		end 
+		else 
+		begin
 			// Start playing the music
 			tone <= 0;
 			play_music <= 1;
-		 end
-	  end 
-	  else 
-	  begin
-		 // Stop playing the music
-		 play_music <= 0;
-		 tone <= 0;
-	  end
+		end
+	end 
+	else 
+	begin
+		// Stop playing the music
+		play_music <= 0;
+		tone <= 0;
+	end
 end
 
 /******************************************************************************
@@ -64,17 +64,17 @@ This functive determines the clock divider value for a 50mHz clock based
 on note being retrieved.
 ******************************************************************************/
 always @*
-case(note)
-	 0: clk_divider = 10'd1023;//A
-	 1: clk_divider = 10'd965;// A#/Bb
-	 2: clk_divider = 10'd911;//B
-	 3: clk_divider = 10'd861;//C
-	 4: clk_divider = 10'd811;// C#/Db
-	 5: clk_divider = 10'd767;//D
-	 6: clk_divider = 10'd723;// D#/Eb
-	 7: clk_divider = 10'd683;//E
-	 8: clk_divider = 10'd645;//F
-	 9: clk_divider = 10'd607;// F#/Gb
+case(note) // Can You Hear The Music
+	0: clk_divider = 10'd1023;//A
+	1: clk_divider = 10'd965;// A#/Bb
+	2: clk_divider = 10'd911;//B
+	3: clk_divider = 10'd861;//C
+	4: clk_divider = 10'd811;// C#/Db
+	5: clk_divider = 10'd767;//D
+	6: clk_divider = 10'd723;// D#/Eb
+	7: clk_divider = 10'd683;//E
+	8: clk_divider = 10'd645;//F
+	9: clk_divider = 10'd607;// F#/Gb
 	10: clk_divider = 10'd573;//G
 	11: clk_divider = 10'd541;// G#/Ab
 	default: clk_divider = 10'd0;
