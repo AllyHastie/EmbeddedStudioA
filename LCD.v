@@ -62,10 +62,10 @@ Binary_to_BCD Binary_to_BCD (
     parameter  dat9=4'hD; 
     parameter  dat10=4'hE; 
     parameter  dat11=5'h10; 
-	 parameter  dat12=5'h11; 
-	 parameter  dat13=5'h12; 
-	 parameter  dat14=5'h13; 
-	 parameter  dat15=5'h14;  
+    parameter  dat12=5'h11; 
+    parameter  dat13=5'h12; 
+    parameter  dat14=5'h13; 
+    parameter  dat15=5'h14;  
     parameter  nul=4'hF; 
 
 
@@ -105,17 +105,17 @@ begin
     dat9:   begin  rs<=1; dat<= convert_to_char((data[7]) ? 4'd5 : 4'd0); next<=dat10; end //Displays decimal.
 	 // As a 9-bit register accuracy is only to 0.5 thus if bit is 1 it's .5 if bit is 0 it's 0
     dat10:  begin  rs<=1; dat<="C"; next<=dat11; end //Displays "C"
-  	 dat11:  begin  rs<=1; dat<=" "; next<=dat12; end 
-	 dat12:  begin  rs<=1; dat<=" "; next<=dat13; end 
-	 dat13:  begin  rs<=1; dat<=" "; next<=dat14; end 
-	 dat14:  begin  rs<=1; dat<=" "; next<=dat15; end 	
+    dat11:  begin  rs<=1; dat<=" "; next<=dat12; end 
+    dat12:  begin  rs<=1; dat<=" "; next<=dat13; end 
+    dat13:  begin  rs<=1; dat<=" "; next<=dat14; end 
+    dat14:  begin  rs<=1; dat<=" "; next<=dat15; end 	
     dat15:  begin  rs<=1; dat<=" "; next<=nul; end 
     nul:   begin rs<=0;  dat<=8'h00;                    
       if(cnt!=2'h2)  
         begin  
           e<=0;
-			 next<=set0;
-			 cnt<=cnt+1;  
+          next<=set0;
+          cnt<=cnt+1;  
         end  
       else 
 		//resets LCD display
